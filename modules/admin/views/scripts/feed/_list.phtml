@@ -1,0 +1,9 @@
+<tr>
+	<td><a href="/feed/edit/id/<?php echo urlencode($this->feed['id']) ?>?return=<?php echo urlencode($_SERVER['REQUEST_URI']) ?>" title="Edit this feed"><?php echo $this->feed['id'] ?></a></td>
+	<td><?php echo $this->escape($this->feed['engine']) ?></td>
+	<td><?php echo $this->feed['region']['name'] ?></td>
+	<td><?php echo $this->escape($this->feed['url']) ?></td>
+	<td>
+		<a href="/feed/delete/id/<?php echo urlencode($this->feed['id']) ?>?return=<?php echo urlencode($_SERVER['REQUEST_URI']) ?>" title="Delete this feed" class="delete" onclick="return confirm('Are you sure?')">Delete</a>
+	</td>
+</tr>

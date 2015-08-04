@@ -1,0 +1,4 @@
+div#bot div.wrapper { padding:20px 0; }
+	div#bot ol { list-style:decimal; padding:10px 0 0 30px; }
+	div#bot ol li { padding:5px 0; font-size:14px; line-height:20px; color:#777; }
+	div#bot ol li h3 { font-size:16px; line-height:20px; color:#000; }

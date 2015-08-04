@@ -1,0 +1,21 @@
+<h1>Edit site</h1>
+
+<?php echo $this->form ?>
+
+<h2>Feeds</h2>
+
+<table class="list">
+	<?php
+	foreach ($this->feeds as $feed) {
+		echo $this->partial('feed/_list.phtml', array(
+			'config' => $this->config,
+			'site' => $this->site,
+			'feed' => $feed
+		));
+	}
+	?>
+</table>
+
+<ul class="actions">
+	<li><a href="/feed/new?site=<?php echo urlencode($this->site['id']) ?>&amp;return=<?php echo urlencode($_SERVER['REQUEST_URI']) ?>" title="Add a new feed">Add new...</a></li>
+</ul>

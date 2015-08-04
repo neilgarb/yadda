@@ -1,0 +1,20 @@
+<div class="section">
+	<h1 class="section-header1"><?php echo $this->escape($this->deal['title']) ?></h1>
+	<?php echo str_replace('<p>', '<p class="section-text deal-description">', $this->format($this->trim($this->deal['description'], 400))) ?>
+	<p class="section-text"><a href="<?php echo $this->deal['link'] ?>" title="<?php echo $this->escape($this->deal['title']) ?>" class="link">View this deal on <?php echo $this->escape($this->deal['site']['name']) ?>...</a></p>
+</div>
+
+<div class="section deal-meta">
+	<dl>
+		<dt class="deal-meta-label">Date added:</dt>
+			<dd class="deal-meta-value"><?php echo date('j M', $this->deal['date']) ?></dd>
+		<dt class="deal-meta-label">Price:</dt>
+			<dd class="deal-meta-value"><?php echo $this->format($this->deal['price'], 'price') ?></dd>
+		<dt class="deal-meta-label">City:</dt>
+			<dd class="deal-meta-value"><?php echo $this->escape($this->deal['region']['name']) ?></dd>
+	</dl>
+</div>
+
+<div class="section">
+	<img src="http://<?php echo $this->config->domain->data ?>/deal/<?php echo $this->deal['id'] ?>/listing.jpg" alt="[Thumbnail]" />
+</div>

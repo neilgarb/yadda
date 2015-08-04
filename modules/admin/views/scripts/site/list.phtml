@@ -1,0 +1,18 @@
+<h1>Sites</h1>
+
+<table class="list">
+	<?php
+	foreach ($this->sites['results'] as $site) {
+		echo $this->partial('site/_list.phtml', array('site' => $site));
+	}
+	?>
+</table>
+
+<?php echo $this->partial('_pagination.phtml', array(
+	'url' => '/site/list',
+	'data' => $this->sites
+)) ?>
+
+<ul class="actions">
+	<li><a href="/site/new?return=<?php echo urlencode($_SERVER['REQUEST_URI']) ?>" title="Add a new site">Add new...</a></li>
+</ul>

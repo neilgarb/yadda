@@ -1,0 +1,20 @@
+<div class="section">
+	<h1 class="section-header1">Contact us</h1>
+	<form action="<?php echo $this->url(array(), 'contact') ?>" method="post">
+		<div class="form-element">
+			<label for="contact-name" class="form-label">Your name:</label>
+			<input type="text" name="name" id="contact-name" value="<?php echo $this->escape($this->form->name->getValue()) ?>" class="input-text" />
+		</div>
+		<div class="form-element">
+			<label for="contact-email" class="form-label">Your email address:</label>
+			<input type="text" name="email" id="contact-email" value="<?php echo $this->escape($this->form->email->getValue()) ?>" class="input-text" />
+		</div>
+		<div class="form-element">
+			<label for="contact-comments" class="form-label">Your comments:</label>
+			<textarea name="comments" id="contact-comments"><?php echo $this->escape($this->form->comments->getValue()) ?></textarea>
+		</div>
+		<div class="form-element">
+			<input type="submit" value="Submit" class="input-button" />
+		</div>
+	</form>
+</div>

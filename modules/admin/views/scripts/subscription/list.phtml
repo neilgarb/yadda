@@ -1,0 +1,14 @@
+<h1>Subscriptions</h1>
+
+<table class="list">
+	<?php
+	foreach ($this->subscriptions['results'] as $subscription) {
+		echo $this->partial('subscription/_list.phtml', array('subscription' => $subscription));
+	}
+	?>
+</table>
+
+<?php echo $this->partial('_pagination.phtml', array(
+	'url' => '/subscription/list',
+	'data' => $this->subscriptions
+)) ?>

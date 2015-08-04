@@ -1,0 +1,4 @@
+<div class="deal-list-item">
+	<a href="<?php echo $this->url($this->deal, 'deal') ?>" title="<?php echo $this->escape($this->deal['title']) ?>" class="link deal-list-item-title"><?php echo $this->escape($this->trim($this->deal['title'], 60)) ?></a>
+	<p class="deal-list-item-description"><span class="deal-list-item-date"><?php echo date('j M', $this->deal['date']) ?></span> &ndash; <?php echo $this->trim($this->deal['description'], 120) ?> <a href="<?php echo $this->url($this->deal, 'deal') ?>" title="<?php echo $this->escape($this->deal['title']) ?>" class="link deal-list-item-more">Read&nbsp;more...</a></p>
+</div>

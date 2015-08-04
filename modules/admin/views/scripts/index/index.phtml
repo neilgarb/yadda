@@ -1,0 +1,66 @@
+<div class="left">
+	<div class="section">
+		<h2>Deals</h2>
+		<ul>
+			<li><a href="/deal/list" title="List all deals">List</a></li>
+		</ul>
+	</div>
+
+	<div class="section">
+		<h2>Sites</h2>
+		<ul>
+			<li><a href="/site/list" title="List all sites">List</a></li>
+			<li><a href="/site/new" title="Add a new site">Add new...</a></li>
+		</ul>
+	</div>
+
+	<div class="section">
+		<h2>Regions</h2>
+		<ul>
+			<li><a href="/region/list" title="List all regions">List</a></li>
+			<li><a href="/region/new" title="Add a new region">Add new...</a></li>
+		</ul>
+	</div>
+
+	<div class="section">
+		<h2>Subscriptions</h2>
+		<ul>
+			<li><a href="/subscription/list" title="List all subscriptions">List</a></li>
+		</ul>
+	</div>
+</div>
+
+<div class="right">
+		<div class="section">
+			<h2>Last 14 days</h2>
+			<div id="graph" style="width:100%; height:320px"></div>
+			<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+			<script type="text/javascript">
+				google.load('visualization', '1', { packages: ['corechart'] });
+				google.setOnLoadCallback(drawChart);
+				function drawChart() {
+					var data = new google.visualization.DataTable();
+
+					data.addColumn('date', 'Day');
+					data.addColumn('number', 'Deals');
+					data.addColumn('number', 'Votes');
+					data.addColumn('number', 'Subscriptions');
+					data.addRows(<?php echo sizeof($this->reportData) ?>);
+
+					<?php $i = 0; foreach ($this->reportData as $day => $data): ?>
+					data.setValue(<?php echo $i ?>, 0, new Date(
+						<?php echo date('Y', strtotime($day)) ?>,
+						<?php echo intval(date('n', strtotime($day))) - 1 ?>,
+						<?php echo date('j', strtotime($day)) ?>
+					));
+					data.setValue(<?php echo $i ?>, 1, <?php echo $data['deals'] ?>);
+					data.setValue(<?php echo $i ?>, 2, <?php echo $data['votes'] ?>);
+					data.setValue(<?php echo $i ?>, 3, <?php echo $data['subscriptions'] ?>);
+					<?php $i ++; endforeach; ?>
+
+					var chart = new google.visualization.LineChart(document.getElementById('graph'));
+					chart.draw(data, { vAxis: { minValue: 0 } });
+				}
+			</script>
+		</div>
+</div>

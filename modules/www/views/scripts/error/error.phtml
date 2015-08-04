@@ -1,0 +1,15 @@
+<?php echo $this->render('_header.phtml') ?>
+
+<div id="error">
+	<div class="wrapper">
+		<div class="side-padding">
+			<h1>Error</h1>
+			<p>The page you requested could not be found.</p>
+			<?php if (APPLICATION_ENVIRONMENT == 'development'): ?>
+			<div><?php var_dump($this->exception) ?></div>
+			<?php endif; ?>
+		</div>
+	</div>
+</div>
+
+<?php echo $this->render('_footer.phtml') ?>

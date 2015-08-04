@@ -1,0 +1,12 @@
+<tr>
+	<td><a href="/site/edit/id/<?php echo urlencode($this->site['id']) ?>?return=<?php echo urlencode($_SERVER['REQUEST_URI']) ?>" title="Edit this site"><?php echo $this->escape($this->site['id']) ?></a></td>
+	<td><?php echo $this->escape($this->site['name']) ?></td>
+	<td>
+		<?php if ($this->site['latestDeal'] !== null && strtotime($this->site['latestDeal']) < strtotime('-14 day')): ?>
+		<span class="stale">Stale (latest deal <?php echo $this->site['latestDeal'] ?>)</span>
+		<?php endif; ?>
+	</td>
+	<td>
+		<a href="/site/delete/id/<?php echo urlencode($this->site['id']) ?>?return=<?php echo urlencode($_SERVER['REQUEST_URI']) ?>" title="Delete this site" class="delete" onclick="return confirm('Are you sure?');">Delete</a>
+	</td>
+</tr>

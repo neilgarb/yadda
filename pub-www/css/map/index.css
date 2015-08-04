@@ -1,0 +1,26 @@
+html, body { height:100%; }
+div#wrapper { height:100%; }
+div#header div.wrapper { width:100%; position:fixed; top:0; left:0; background:#eee; z-index:10; }
+div#footer div.wrapper { width:100%; position:fixed; bottom:0; left:0; background:#eee; z-index:10; }
+
+div.sharing { position:fixed; left:240px; top:55px; z-index:15; width:180px; }
+	div.sharing div.facebook { float:left; width:90px; height:25px;  }
+	div.sharing div.google { float:left; width:90px; height:25px; }
+
+div#map { position:fixed; top:100px; }
+
+div#search { position:fixed; top:50px; right:20px; z-index:15; }
+	div#search label { font-size:12px; }
+
+div#drawer { position:fixed; top:100px; width:300px; background:#fff; border-left:1px solid #ccc; overflow-x:hidden; }
+	div#drawer div.deals { padding:10px; }
+	div#drawer div.deal { padding:0 0 10px 0; border-bottom:1px solid #eee; margin-bottom:10px; }
+	div#drawer div.deal:last-child { margin-bottom:0; border-bottom:0; }
+	div#drawer div.deal a.thumb { display:block; width:75px; margin:0 0 5px 0; }
+	div#drawer div.deal a.thumb img { display:block; border:1px solid #ccc; }
+	div#drawer div.deal a.title { display:block; font-size:14px; line-height:20px; }
+	div#drawer div.deal span.description { font-size:12px; line-height:18px; color:#777; }
+	div#drawer div.deal div.actions { padding-top:3px; font-size:12px; line-height:18px; }
+	
+img#loader { position:fixed; bottom:30px; right:20px; z-index:15; }
+span#result-count { position:fixed; display:block; bottom:36px; right:20px; z-index:20; color:#000; font-size:12px; }

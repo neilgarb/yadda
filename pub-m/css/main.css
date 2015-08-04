@@ -1,0 +1,47 @@
+html, body, h1, h2, h3, ul, ol, li, dl, dt, dd, form, fieldset, span, p, a, img { padding:0; margin:0; }
+
+body { font-family:"Lucida Grande",Arial,sans-serif; font-size:medium; }
+
+a img { border:0; display:block; }
+
+.link { color:#0055a5; }
+
+.flash-messages { background:#ffc; padding:10px 5px; border-bottom:1px solid #ccc; }
+	.flash-messages-text { font-size:x-small; }
+
+.ad img { display:block; }
+
+.section { padding:10px 5px; border-bottom:1px solid #ccc; }
+	.section-header1 { font-size:medium; padding-bottom:0.25em; }
+	.section-header2 { font-size:medium; padding-bottom:0.25em; color:#666; }
+	.section-text { font-size:small; padding-bottom:0.25em; }
+	.section-list { }
+	.section-list-item { font-size:small; }
+
+.deal-list { }
+	.deal-list-item { padding:10px 5px; border-bottom:1px solid #ddd; }
+	.deal-list-item-title { font-size:small; padding-bottom:5px; display:block; }
+	.deal-list-item-description { color:#777; font-size:x-small; }
+	.deal-list-item-date { color:#000; }
+	.deal-list-empty { padding:10px 5px; border-bottom:1px solid #ccc; }
+	.deal-list-empty-text { color:#900; }
+	.deal-list-pagination { padding:10px 5px; border-bottom:1px solid #ccc; }
+	.deal-list-pagination-link { font-size:x-small; }
+	.deal-list-pagination-disabled { font-size:x-small; color:#777; }
+	.deal-list-pagination-info { font-size:x-small; }
+
+.deal-description { color:#777; }
+.deal-meta { background:#eee; }
+	.deal-meta-label { font-size:x-small; color:#777; padding:3px 0; }
+	.deal-meta-value { font-size:small; padding:0 0 3px 0; }
+
+form { }
+	.form-element { }
+	.form-label { display:block; font-size:x-small; padding:5px 0 2px 0; color:#777; }
+
+.header { padding:10px 5px; background:#eee; border-bottom:1px solid #ccc; }
+
+.footer { padding:10px 5px; background:#eee; }
+	.footer-text { font-size:x-small; }
+	.footer-actions { font-size:x-small; }
+	.footer-actions-link { font-size:x-small; }

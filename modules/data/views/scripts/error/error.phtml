@@ -1,0 +1,7 @@
+<h1>Error</h1>
+
+<?php if (APPLICATION_ENVIRONMENT != 'production'): ?>
+<pre>
+<?php var_dump($this->exception) ?>
+</pre>
+<?php endif; ?>

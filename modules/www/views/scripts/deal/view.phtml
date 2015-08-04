@@ -1,0 +1,87 @@
+<?php echo $this->render('_header.phtml') ?>
+
+<div id="deal">
+	<div class="wrapper">
+		<div class="side-padding">
+			<h1><?php echo $this->escape($this->deal['title']) ?></h1>
+			<div class="two-column">
+				<div class="left-column">
+					<div class="meta clearfix">
+						<dl>
+							<dt>City:</dt>
+								<dd>
+									<?php echo $this->escape($this->deal['region']['name']) ?>
+									<a href="<?php echo $this->url(array(), 'search') ?>?region=<?php echo urlencode($this->deal['region']['id']) ?>" title="All deals in <?php echo $this->escape($this->deal['region']['name']) ?>" class="subtext">More in this city...</a>
+								</dd>
+						</dl>
+						<dl>
+							<dt>Date added:</dt>
+								<dd<?php if ($this->deal['date'] < strtotime('-7 day')): ?> class="expired"<?php endif; ?>>
+									<?php echo date('j M Y', $this->deal['date']) ?>
+									<?php if ($this->deal['date'] < strtotime('-7 day')): ?>
+									<span class="subtext">This deal may have expired.</span>
+									<?php else: ?>
+									<span class="subtext"><?php echo $this->format($this->deal['date'], 'ago') ?></span>
+									<?php endif; ?>
+								</dd>
+						</dl>
+						<?php if ($this->deal['price'] !== null): ?>
+						<dl>
+							<dt>Price:</dt>
+								<dd>
+									<?php echo $this->format($this->deal['price'], 'price') ?>
+									<?php if ($this->deal['value'] !== null || $this->deal['discount'] !== null): ?>
+									<span class="subtext">
+										<?php if ($this->deal['value'] !== null): ?>
+										Value <?php echo $this->format($this->deal['value'], 'price')?>
+										<?php endif; ?>
+										<?php if ($this->deal['discount'] !== null): ?>
+										Save <?php echo sprintf('%d', $this->deal['discount']) ?>%
+										<?php endif; ?>
+									</span>
+									<?php endif; ?>
+								</dd>
+						</dl>
+						<?php endif; ?>
+						<dl>
+							<dt>From:</dt>
+								<dd>
+									<?php echo $this->escape($this->deal['site']['name']) ?>
+									<a href="<?php echo $this->escape($this->deal['site']['url']) ?>" title="<?php echo $this->escape($this->deal['site']['name']) ?>" class="subtext"><?php echo $this->escape($this->deal['site']['url']) ?></a>
+								</dd>
+						</dl>
+					</div>
+					<div class="description">
+						<?php echo $this->format($this->deal['description']) ?>
+					</div>
+					<?php if ($this->deal['expired'] === false): ?>
+					<a href="<?php echo $this->deal['link'] ?>" title="<?php echo $this->escape($this->deal['title']) ?>" class="button">I want in!</a>
+					<?php else: ?>
+					<div class="vote clearfix">
+						<p>This deal appears to have expired, but never mind: click <em>Again!</em>, and we'll let <?php echo $this->escape($this->deal['site']['name']) ?> know which deals people would most like repeated.</p>
+						<a href="<?php echo $this->url($this->deal, 'deal/vote') ?>" title="Vote for this deal to be repeated" class="button" id="vote-button" rel="nofollow">Again!</a>
+					</div>
+					<?php endif; ?>
+					<div class="sharing">
+						<div class="facebook"> 
+							<fb:like width="450" font="lucida grande" send="true" href="http://yadda.co.za<?php echo $this->url($this->deal, 'deal') ?>" />
+						</div>
+						<div class="google">
+							<div class="g-plusone" data-size="medium" data-href="http://yadda.co.za<?php echo $this->url($this->deal, 'deal') ?>"></div>
+						</div> 
+					</div>
+				</div>
+				<div class="right-column">
+					<img src="http://<?php echo $this->config->domain->data ?>/deal/<?php echo $this->deal['id'] ?>/detail.jpg" alt="" class="thumb" />
+					<div class="map">
+						<h2>Deals. On a map.</h2>
+						<p>Why not browse daily deals near you on a map instead of just "deals in your city"? <a href="<?php echo $this->url(array(), 'map') ?>?from=deal" title="Deals near me">Yes, please!</a></p>
+					</div>
+				</div>
+				<div style="clear:left"></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<?php echo $this->render('_footer.phtml') ?>

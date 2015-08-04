@@ -1,0 +1,14 @@
+<h1>Deals</h1>
+
+<table class="list">
+	<?php
+	foreach ($this->deals['results'] as $deal) {
+		echo $this->partial('deal/_list.phtml', array('deal' => $deal));
+	}
+	?>
+</table>
+
+<?php echo $this->partial('_pagination.phtml', array(
+	'url' => '/deal/list',
+	'data' => $this->deals
+)) ?>

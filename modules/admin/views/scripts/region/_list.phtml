@@ -1,0 +1,7 @@
+<tr>
+	<td><a href="/region/edit/id/<?php echo urlencode($this->region['id']) ?>?return=<?php echo urlencode($_SERVER['REQUEST_URI']) ?>" title="Edit this region"><?php echo $this->escape($this->region['id']) ?></a></td>
+	<td><?php echo $this->escape($this->region['name']) ?></td>
+	<td>
+		<a href="/region/delete/id/<?php echo urlencode($this->region['id']) ?>?return=<?php echo urlencode($_SERVER['REQUEST_URI']) ?>" title="Delete this region" class="delete" onclick="return confirm('Are you sure?');">Delete</a>
+	</td>
+</tr>

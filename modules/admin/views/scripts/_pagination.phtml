@@ -1,0 +1,17 @@
+<div class="pagination">
+	<?php if ($this->data['pages'] == 1): ?>
+	<p class="all-results">Showing all results.</p>
+	<?php else: ?>
+	<div class="previous">
+		<?php if ($this->data['page'] > 1): ?>
+		<a href="<?php echo $this->url ?>?<?php echo http_build_query(array_merge($this->data['params'], array('page' => $this->data['page'] - 1))) ?>" title="Previous page">&laquo; Previous</a>
+		<?php else: ?>&laquo; Previous<?php endif; ?>
+	</div>
+	<div class="next">
+		<?php if ($this->data['page'] < $this->data['pages']): ?>
+		<a href="<?php echo $this->url ?>?<?php echo http_build_query(array_merge($this->data['params'], array('page' => $this->data['page'] + 1))) ?>" title="Next page">Next &raquo;</a>
+		<?php else: ?>Next &raquo;<?php endif; ?>
+	</div>
+	<div style="clear:left;"></div>
+	<?php endif; ?>
+</div>

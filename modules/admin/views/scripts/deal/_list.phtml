@@ -1,0 +1,12 @@
+<tr>
+	<td><a href="/deal/edit/id/<?php echo urlencode($this->deal['id']) ?>?return=<?php echo urlencode($_SERVER['REQUEST_URI']) ?>" title=""><?php echo $this->deal['id'] ?></a></td>
+	<td><span class="overflow"><?php echo $this->escape($this->deal['title']) ?></span></td>
+	<td><a href="/site/edit/id/<?php echo urlencode($this->deal['site']['id']) ?>?return=<?php echo urlencode($_SERVER['REQUEST_URI']) ?>" title="Edit this site"><?php echo $this->escape($this->deal['site']['name']) ?></a></td>
+	<td><?php echo $this->escape($this->deal['region']['name']) ?></td>
+	<td><span class="price"><?php echo $this->deal['price'] === null ? '' : sprintf('%.2f', $this->deal['price']) ?></span></td>
+	<td><span class="no-wrap"><?php echo date('H:i j M', $this->deal['date']) ?></span></td>
+	<td class="actions">
+		<a href="/deal/delete/id/<?php echo urlencode($this->deal['id']) ?>?return=<?php echo urlencode($_SERVER['REQUEST_URI']) ?>" title="Delete this deal" onclick="return confirm('Are you sure?')" class="delete">Delete</a>
+		<a href="/deal/feature/id/<?php echo urlencode($this->deal['id']) ?>?return=<?php echo urlencode($_SERVER['REQUEST_URI']) ?>" title="Feature this deal" class="feature">Feature</a>
+	</td>
+</tr>

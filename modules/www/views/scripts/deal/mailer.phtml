@@ -1,0 +1,79 @@
+<div style="background:#fff">
+	<table style="width:600px; border-collapse:collapse;" cellpadding="0" cellspacing="0">
+		<tr>
+			<td style="width:600px" colspan="5">
+				<font size="4" color="#000" face="Lucida Grande,Arial,sans-serif" style="font-size:18px; line-height:27px;"><?php echo $this->escape($this->results['description']) ?></font>
+			</td>
+		</tr>
+		<tr>
+			<td style="height:10px; width:600px; border-bottom:1px solid #ccc;" colspan="5">
+				<img src="http://<?php echo $_SERVER['HTTP_HOST'] ?>/img/spacer.gif" alt="" style="height:10px;" />
+			</td>
+		</tr>
+		<tr>
+			<td style="height:10px; width:600px;" colspan="5">
+				<img src="http://<?php echo $_SERVER['HTTP_HOST'] ?>/img/spacer.gif" alt="" style="height:10px;" />
+			</td>
+		</tr>
+		<?php foreach ($this->results['results'] as $deal): ?>
+		<tr>
+			<td style="width:10px;">
+				<img src="http://<?php echo $_SERVER['HTTP_HOST'] ?>/img/spacer.gif" alt="" style="width:10px;" />
+			</td>
+			<td style="width:75px" valign="top">
+				<a href="http://<?php echo $_SERVER['HTTP_HOST'] ?><?php echo $this->url($deal, 'deal') ?>?from=mailer" title="<?php echo $this->escape($deal['title']) ?>"><img src="http://<?php echo $this->config->domain->data ?>/deal/<?php echo $deal['id'] ?>/listing.jpg" alt="[Thumbnail]" style="border:1px solid #ccc; display:block;" /></a>
+			</td>
+			<td style="width:5px;">
+				<img src="http://<?php echo $_SERVER['HTTP_HOST'] ?>/img/spacer.gif" alt="" style="width:5px;" />
+			</td>
+			<td style="width:500px" valign="top">
+				<a href="http://<?php echo $_SERVER['HTTP_HOST'] ?><?php echo $this->url($deal, 'deal') ?>?from=mailer" title="<?php echo $this->escape($deal['title']) ?>" style="text-decoration:none;"><font size="3" color="#0055a5" face="Lucida Grande,Arial,sans-serif" style="font-size:14px; line-height:20px;"><?php echo $deal['title'] ?></font></a><br />
+				<font size="2" color="#777" face="Lucida Grande,Arial,sans-serif" style="font-size:12px; line-height:18px;"><?php echo $this->escape($this->trim($deal['description'], 180)) ?></font><br />
+				<font size="2" color="#000" face="Lucida Grande,Arial,sans-serif" style="font-size:12px; line-height:18px;"><?php echo date('j M', $deal['date']) ?> | </font><a href="http://<?php echo $_SERVER['HTTP_HOST'] ?><?php echo $this->url($deal, 'deal') ?>?from=mailer" title="<?php echo $this->escape($deal['title']) ?>" style="text-decoration:none;"><font size="2" color="#0055a5" face="Lucida Grande,Arial,sans-serif" style="font-size:12px; line-height:18px;">Read more...</font></a>
+			</td>
+			<td style="width:10px;">
+				<img src="http://<?php echo $_SERVER['HTTP_HOST'] ?>/img/spacer.gif" alt="" style="width:10px;" />
+			</td>
+		</tr>
+		<tr>
+			<td style="height:10px; width:600px; border-bottom:1px solid #ccc;" colspan="5">
+				<img src="http://<?php echo $_SERVER['HTTP_HOST'] ?>/img/spacer.gif" alt="" style="height:10px;" />
+			</td>
+		</tr>
+		<tr>
+			<td style="height:10px; width:600px;" colspan="5">
+				<img src="http://<?php echo $_SERVER['HTTP_HOST'] ?>/img/spacer.gif" alt="" style="height:10px;" />
+			</td>
+		</tr>
+		<?php endforeach; ?>
+		<?php if ($this->results['total'] > sizeof($this->results['results'])): ?>
+		<tr>
+			<td style="width:600px" colspan="5">
+				<a href="http://<?php echo $_SERVER['HTTP_HOST'] ?>/search?<?php echo http_build_query(array_merge(array_diff_key($this->results['params'], array('page' => null, 'count' => null)), array('from' => 'mailer'))) ?>" title="<?php echo $this->escape($this->results['description']) ?>" style="text-decoration:none;"><font size="2" color="#0055a5" face="Lucida Grande,Arial,sans-serif" style="font-size:12px; line-height:18px;">View all <?php echo $this->format($this->results['total']) ?> results...</font></a>
+			</td>
+		</tr>
+		<tr>
+			<td style="height:10px; width:600px; border-bottom:1px solid #ccc;" colspan="5">
+				<img src="http://<?php echo $_SERVER['HTTP_HOST'] ?>/img/spacer.gif" alt="" style="height:10px;" />
+			</td>
+		</tr>
+		<tr>
+			<td style="height:10px; width:600px;" colspan="5">
+				<img src="http://<?php echo $_SERVER['HTTP_HOST'] ?>/img/spacer.gif" alt="" style="height:10px;" />
+			</td>
+		</tr>
+		<?php endif; ?>
+		<tr>
+			<td style="width:600px" colspan="5">
+				<a href="http://<?php echo $_SERVER['HTTP_HOST'] ?>/?from=mailer" title="yadda." style="text-decoration:none;"><font size="2" color="#0055a5" face="Lucida Grande,Arial,sans-serif" style="font-size:12px; line-height:18px;">yadda.</font></a>
+				<font size="2" color="#000" face="Lucida Grande,Arial,sans-serif" style="font-size:12px; line-height:18px;"> | </font>
+				<a href="{unsubscribe}" title="Unsubscribe" style="text-decoration:none;"><font size="2" color="#f00" face="Lucida Grande,Arial,sans-serif" style="font-size:12px; line-height:18px;">Unsubscribe</font></a>
+			</td>
+		</tr>
+		<tr>
+			<td style="height:10px; width:600px;" colspan="5">
+				<img src="http://<?php echo $_SERVER['HTTP_HOST'] ?>/img/spacer.gif" alt="" style="height:10px;" />
+			</td>
+		</tr>
+	</table>
+</div>

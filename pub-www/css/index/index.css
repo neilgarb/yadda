@@ -1,0 +1,41 @@
+body { background-color:#eee; background-image:url(/img/bg-index.gif); background-repeat:repeat-x; background:-webkit-linear-gradient(top, #c1d72e, #eeeeee 300px); background:-moz-linear-gradient(top, #c1d72e, #eeeeee 300px); background:-ms-linear-gradient(top, #c1d72e, #eeeeee 300px); background:-o-linear-gradient(top, #c1d72e, #eeeeee 300px); }
+
+div#intro { }
+	div#intro div.wrapper { padding:20px 0; height:160px; border-bottom:1px solid #ccc; position:relative; border-right:0; border-left:0; border-bottom:0; height:260px; background:none; }
+	div#intro span.logo { width:304px; height:106px; display:block; background:url(/img/logo-index.png) no-repeat left top; position:absolute; left:20px; bottom:20px; }
+	div#intro div.description { position:absolute; right:20px; bottom:15px; width:500px; text-align:right; }
+	div#intro div.description h1 { color:#666; font-size:18px; line-height:27px; text-shadow:#f0f0f0 1px 1px 1px; }
+	div#intro div.description p { padding:0 0 35px 0; color:#666; font-size:14px; line-height:21px; text-shadow:#f0f0f0 1px 1px 1px; }
+	div#intro div.sharing { width:180px; position:absolute; right:0; bottom:0; }
+	div#intro div.facebook { float:left; width:90px; height:25px;  }
+	div#intro div.google { float:left; width:90px; height:25px; }
+	
+div#facets { }
+	div#facets div.wrapper { padding:20px 0; border-bottom:1px solid #ccc; border-top:1px solid #ccc; }
+	div#facets div.section { float:left; width:260px; margin-right:20px; padding-right:20px; border-right:1px solid #ddd; }
+	div#facets div.first { margin-left:40px; }
+	div#facets div.last { margin-right:0; padding-right:0; border:0; }
+	div#facets div.height { height:200px; }
+	div#facets div.section h2 { font-size:16px; line-height:36px; border-bottom:1px solid #eee; margin-bottom:10px; }
+	div#facets div.section ul li { font-size:14px; line-height:20px; }
+	div#facets div.all { text-align:center; padding-top:10px; font-size:12px; }
+	div#facets span.count { font-size:10px; color:#999; }
+	div#facets input[type=text] { width:150px; }
+
+div#featured { }
+	div#featured div.wrapper { border-bottom:1px solid #ccc; padding:20px 0; background:#eee; box-shadow:inset 0 0 10px #ddd; -moz-box-shadow:inset 0 0 10px #ddd; -webkit-box-shadow:inset 0 0 10px #ddd; }
+	div#featured div.side-padding { }
+	div#featured div.deal { float:left; width:260px; margin-right:20px; padding-right:20px; border-right:1px solid #ddd; }
+	div#featured div.first { margin-left:40px; }
+	div#featured div.last { margin-right:0; border-right:0; }
+	div#featured h3 { font-size:10px; line-height:18px; margin-bottom:10px; color:#ccc; letter-spacing:0.1em; font-weight:normal; text-transform:uppercase; }
+	div#featured a.thumb { display:block; margin:0 10px 0 0; float:left; }
+	div#featured a.thumb img { border:1px solid #ccc; display:block; }
+	div#featured a.title { font-size:14px; line-height:18px; float:left; width:170px; overflow:hidden; }
+
+div#sites { }
+	div#sites div.wrapper { padding:20px 0; }
+	div#sites h2 { font-size:16px; line-height:36px; border-bottom:1px solid #eee; margin:0 40px 10px 40px; }
+	div#sites ul { padding-left:40px; }
+	div#sites ul li { float:left; width:260px; margin-right:40px; font-size:14px; line-height:18px; padding-bottom:10px; color:#444; }
+	div#sites ul li a { display:block; font-size:10px; line-height:18px; }

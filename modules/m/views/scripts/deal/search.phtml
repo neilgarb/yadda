@@ -1,0 +1,98 @@
+<div class="section">
+	<h1 class="section-header1"><?php echo $this->escape($this->results['description']) ?></h1>
+</div>
+
+<div class="deal-list">
+	<?php
+	foreach ($this->results['results'] as $deal) {
+		echo $this->partial('deal/_deal.phtml', array(
+			'config' => $this->config,
+			'deal' => $deal,
+			'params' => $this->results['params']
+		));
+	}
+	?>
+	<?php if ($this->results['total'] > 0): ?>
+	<div class="deal-list-pagination">
+		<?php if ($this->results['page'] > 1): ?>
+		<a href="<?php echo $this->url(array(), 'search') ?>?<?php echo http_build_query(array_merge($this->results['params'], array('page' => $this->results['page'] - 1))) ?>" title="Previous page" class="link deal-list-pagination-link">&laquo; Newer</a>
+		<?php else: ?>
+		<span class="deal-list-pagination-disabled">&laquo; Newer</span>
+		<?php endif; ?>
+		
+		<span class="deal-list-pagination-info">Page <?php echo $this->results['page'] ?> of <?php echo $this->results['pages'] ?></span>
+		
+		<?php if ($this->results['page'] < $this->results['pages']): ?>
+		<a href="<?php echo $this->url(array(), 'search') ?>?<?php echo http_build_query(array_merge($this->results['params'], array('page' => $this->results['page'] + 1))) ?>" title="Next page" class="link deal-list-pagination-link">Older &raquo;</a>
+		<?php else: ?>
+		<span class="deal-list-pagination-disabled">Older &raquo;</span>
+		<?php endif; ?>
+	</div>
+	<?php else: ?>
+	<div class="deal-list-empty">
+		<p class="section-text deal-list-empty-text">There are no deals matching your search.</p>
+	</div>
+	<?php endif; ?>
+</div>
+
+<div class="section">
+	<h2 class="section-header2">Search</h2>
+	<form action="<?php echo $this->url(array(), 'search') ?>" method="get">
+		<input type="text" name="query" value="<?php echo isset($this->results['params']['query']) ? $this->escape($this->results['params']['query']) : '' ?>" class="input-text" />
+		<input type="submit" value="Search" class="input-button" />
+		<?php foreach (array_diff_key($this->results['params'], array('query' => null)) as $key => $value): ?>
+		<?php if (!empty($value)): ?>
+		<input type="hidden" name="<?php echo $this->escape($key) ?>" value="<?php echo $this->escape($value) ?>" />
+		<?php endif; ?>
+		<?php endforeach;?>
+	</form>
+</div>
+
+<div class="section">
+	<h2 class="section-header2">Filter by city</h2>
+	<ul class="section-list">
+		<li class="section-list-item">
+			<?php if (!isset($this->results['params']['region'])): ?>
+			Any city
+			<?php else: ?>
+			<a href="<?php echo $this->url(array(), 'search') ?>?<?php echo http_build_query(array_merge($this->results['params'], array('region' => null))) ?>" title="Any city" class="link">Any city</a>
+			<?php endif; ?>
+		</li>
+		<?php foreach ($this->regions as $id => $name): ?>
+		<li class="section-list-item">
+			<?php if (isset($this->results['params']['region']) && $this->results['params']['region'] == $id): ?>
+			<?php echo $this->escape($name) ?>
+			<?php else: ?>
+			<a href="<?php echo $this->url(array(), 'search') ?>?region=<?php echo urlencode($id) ?>" title="<?php echo $this->escape($name) ?>" class="link"><?php echo $this->escape($name) ?></a>
+			<?php endif; ?>
+		</li>
+		<?php endforeach; ?>
+	</ul>
+</div>
+
+<div class="section">
+	<h2 class="section-header2">Filter by price</h2>
+	<ul class="section-list">
+		<li class="section-list-item">
+			<?php if (!isset($this->results['params']['price'])): ?>
+			Any price
+			<?php else: ?>
+			<a href="<?php echo $this->url(array(), 'search') ?>?<?php echo http_build_query(array_merge($this->results['params'], array('price' => null))) ?>" title="Any price" class="link">Any price</a>
+			<?php endif; ?>
+		</li>
+		<?php foreach ($this->priceRanges as $key => $range): ?>
+		<?php $label = 'R'.$range[0].' - '.(sizeof($range) > 1 ? 'R'.$range[1] : '') ?>
+		<li class="section-list-item">
+			<?php if (isset($this->results['params']['price']) && $this->results['params']['price'] == $key): ?>
+			<?php echo $this->escape($label) ?>
+			<?php else: ?>
+			<a href="<?php echo $this->url(array(), 'search') ?>?price=<?php echo urlencode($key) ?>" title="<?php echo $this->escape($label) ?>" class="link"><?php echo $this->escape($label) ?></a>
+			<?php endif; ?>
+		</li>
+		<?php endforeach; ?>
+	</ul>
+</div>
+
+<div class="section">
+	<p class="section-text">Show me <a href="<?php echo $this->url(array(), 'search') ?>" title="All deals" class="link">all deals...</a></p>
+</div>

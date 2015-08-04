@@ -1,0 +1,84 @@
+<div id="intro">
+	<div class="wrapper">
+		<div class="side-padding">
+			<span class="logo"></span>
+			<div class="description">
+				<h1>yadda. yet another daily deal aggregator.</h1>
+				<p><em>yadda.</em> gathers into one space the daily deals from<br />South Africa's favourite group buying websites.</p>
+				<?php echo $this->partial('_sharing.phtml') ?>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="facets">
+	<div class="wrapper">
+		<div class="side-padding">
+			<div class="section first">
+				<div class="height">
+					<h2>Search</h2>
+					<form action="<?php echo $this->url(array(), 'search') ?>" method="get">
+						<input type="text" name="query" value="" />
+						<input type="submit" value="Submit" />
+					</form>
+				</div>
+			</div>
+			<div class="section">
+				<div class="height">
+					<h2>Filter by city</h2>
+					<ul>
+						<?php foreach ($this->regions as $id => $name): ?>
+						<li><a href="<?php echo $this->url(array(), 'search') ?>?region=<?php echo urlencode($id) ?>" title="<?php echo $this->escape($name) ?>"><?php echo $this->escape($name) ?></a>
+						<?php endforeach; ?>
+					</ul>
+				</div>
+			</div>
+			<div class="section last">
+				<div class="height">
+					<h2>Filter by price</h2>
+					<ul>
+						<?php foreach (Yadda_Model_Deal::$priceRanges as $key => $range): ?>
+						<?php $label = 'R'.$range[0].' -'.(sizeof($range) > 1 ? ' R'.$range[1] : '' ); ?>
+						<li><a href="<?php echo $this->url(array(), 'search') ?>?price=<?php echo $key ?>" title="<?php echo $this->escape($key) ?>"><?php echo $label ?></a></li>
+						<?php endforeach; ?>
+					</ul>
+				</div>
+			</div>
+			<div style="clear:left"></div>
+			<div class="all">
+				Or, just show me <a href="<?php echo $this->url(array(), 'search') ?>" title="All deals" class="button">all deals</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="featured">
+	<div class="wrapper">
+		<div class="side-padding">
+			<?php $i = 0; foreach ($this->featured as $deal): ?>
+			<div class="deal<?php if ($i == 0): ?> first<?php endif; ?><?php if ($i == sizeof($this->featured) - 1): ?> last<?php endif; ?>">
+				<h3>Featured deal</h3>
+				<a href="<?php echo $this->url($deal, 'deal') ?>?from=featured" title="<?php echo $this->escape($deal['title']) ?>" class="thumb"><img src="http://<?php echo $this->config->domain->data ?>/deal/<?php echo $deal['id'] ?>/listing.jpg" alt="[Thumbnail]" /></a>
+				<a href="<?php echo $this->url($deal, 'deal') ?>?from=featured" title="<?php echo $this->escape($deal['title']) ?>" class="title"><?php echo $this->escape($deal['title']) ?></a>
+			</div>
+			<?php $i ++; endforeach; ?>
+			<div style="clear:left"></div>
+		</div>
+	</div>
+</div>
+
+<div id="sites">
+	<div class="wrapper">
+		<div class="side-padding">
+			<h2>Featured sites</h2>
+			<ul>
+				<?php foreach ($this->sites as $site): ?>
+				<li><?php echo $this->escape($site['name']) ?> <a href="<?php echo $site['url'] ?>" title="<?php echo $this->escape($site['name']) ?> (new window)" class="external"><?php echo $this->escape($site['url']) ?></a></li>
+				<?php endforeach; ?>
+			</ul>
+			<div style="clear:left"></div>
+		</div>
+	</div>
+</div>
+
+<?php echo $this->render('_footer.phtml') ?>

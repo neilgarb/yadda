@@ -1,0 +1,24 @@
+div#search div.wrapper { padding:20px 0; }
+
+p.no-results { font-size:12px; color:#900; background:#f7efef; padding:10px; margin-top:5px; border:1px solid #caa; border-radius:5px; -moz-border-radius:5px; }
+
+div.deal-list { }
+	div.deal-list div.deal { padding:10px; border-bottom:1px solid #eee; }
+	div.deal-list div.deal:last-child { border-bottom:0; padding-bottom:0; }
+	div.deal-list div.meta { float:left; width:535px; }
+	div.deal-list div.deal a.thumb { display:block; float:left; width:75px; margin:5px 10px 5px 0; }
+	div.deal-list div.deal a.thumb img { display:block; border:1px solid #ccc; }
+	div.deal-list div.deal a.title { display:block; font-size:14px; line-height:20px; }
+	div.deal-list div.deal span.description { font-size:12px; line-height:18px; color:#777; }
+	div.deal-list div.deal div.actions { padding-top:3px; font-size:12px; line-height:18px; }
+	div.deal-list div.adsense { border-top:1px solid #e0e0e0; border-bottom:1px solid #e0e0e0; background:#eee; padding:10px 0 10px 86px; margin-top:-1px; }
+
+div.search-params { width:290px; }
+	div.search-params div.section { margin-bottom:10px; }
+	div.search-params h2 { font-size:14px; line-height:30px; border-bottom:1px solid #ddd; margin-bottom:10px; }
+	div.search-params ul { }
+	div.search-params ul li { font-size:12px; line-height:18px; color:#000; }
+	div.search-params input[type=text] { width:180px; }
+	div.search-params a.button { float:left; margin-right:5px; }
+	div.search-params a.button span.rss { padding-left:20px; background:url(/img/rss.png) no-repeat left center; }
+	div.search-params a.button span.email { padding-left:20px; background:url(/img/email.png) no-repeat left center; }

@@ -1,0 +1,47 @@
+<?php echo $this->render('_header.phtml') ?>
+
+<div id="search">
+	<div class="wrapper">
+		<div class="side-padding">
+			<h1><?php echo $this->escape($this->title) ?></h1>
+			<div class="two-column">
+				<div class="left-column">
+					<?php if ($this->deals['total'] == 0): ?>
+					<p class="no-results">There are no deals matching your search.</p>
+					<?php else: ?>
+					<div class="deal-list" id="search-results">
+						<?php
+						$i = 0;
+						foreach ($this->deals['results'] as $deal) {
+							echo $this->partial('deal/_deal.phtml', array(
+								'config' => $this->config,
+								'deal' => $deal
+							));
+							
+							if ($i == 4) {
+								echo $this->adsense('list');
+							}
+							
+							$i ++;
+						}
+						?>
+					</div>
+					<?php endif; ?>
+				</div>
+				<div class="right-column">
+					<?php echo $this->render('deal/_search.phtml') ?>
+				</div>
+				<div style="clear:left"></div>
+			</div>
+		</div>
+	</div>
+	
+</div>
+
+<?php echo $this->render('_footer.phtml') ?>
+
+<?php $this->headScript()->captureStart() ?>
+$(function () {
+	(new YaddaSearch('search-results', <?php echo Zend_Json::encode($this->params) ?>)).init();
+});
+<?php $this->headScript()->captureEnd() ?>

@@ -1,0 +1,72 @@
+<?php $uniqId = uniqid() ?>
+<div class="search-params" id="search-params-<?php echo $uniqId ?>">
+	<div class="section">
+		<h2>Subscribe</h2>
+		<ul class="clearfix">
+			<li><a href="<?php echo $this->escape($this->rss) ?>" title="Subscribe via RSS" class="button"><span class="rss">RSS</span></a></li>
+			<?php $params = array_diff_key($this->params, array('count' => null, 'page' => null)); ?>
+			<li><a href="<?php echo $this->url(array(), 'subscribe') ?>?<?php echo http_build_query($params) ?>" title="Subscribe via email" class="button"><span class="email">Email</span></a>
+		</ul>
+	</div>
+	<div class="section">
+		<h2>Search</h2>
+		<form action="" method="get">
+			<?php foreach (array_diff_key($this->params, array('query' => null)) as $key => $value): ?>
+			<?php if (!empty($value)): ?>
+			<input type="hidden" name="<?php echo $this->escape($key) ?>" value="<?php echo $this->escape($value) ?>" />
+			<?php endif; ?>
+			<?php endforeach;?>
+			<input type="text" name="query" value="<?php echo isset($this->params['query']) ? $this->escape($this->params['query']) : '' ?>" />
+			<input type="submit" value="Submit" />
+		</form>
+	</div>
+	<div class="section">
+		<h2>Filter by city</h2>
+		<ul>
+			<li>
+				<?php if (!isset($this->params['region'])): ?>
+				Any city
+				<?php else: ?>
+				<a href="<?php echo $this->url(array(), 'search') ?>?<?php echo http_build_query(array_merge($this->params, array('region' => null)), null, '&amp;') ?>" title="Any city" class="all">Any city</a>
+				<?php endif; ?>
+			</li>
+			<?php foreach ($this->regions as $id => $name): ?>
+			<li>
+				<?php if (isset($this->params['region']) && $this->params['region'] == $id): ?>
+				<?php echo $this->escape($name) ?>
+				<?php else: ?>
+				<a href="<?php echo $this->url(array(), 'search') ?>?<?php echo http_build_query(array_merge($this->params, array('region' => $id)), null, '&amp;') ?>" title="<?php echo $this->escape($name) ?>"><?php echo $this->escape($name) ?></a>
+				<?php endif; ?>
+			</li>
+			<?php endforeach; ?>
+		</ul>
+	</div>
+	<div class="section">
+		<h2>Filter by price</h2>
+		<ul>
+			<li>
+				<?php if (!isset($this->params['price'])): ?>
+				Any price
+				<?php else: ?>
+				<a href="<?php echo $this->url(array(), 'search') ?>?<?php echo http_build_query(array_merge($this->params, array('price' => null)), null, '&amp;') ?>" title="Any price" class="all">Any price</a>
+				<?php endif; ?>
+			</li>
+			<?php foreach (Yadda_Model_Deal::$priceRanges as $key => $range): ?>
+			<li>
+				<?php $priceLabel = 'R'.$range[0].' - '.(sizeof($range) > 1 ? 'R'.$range[1] : '') ?>
+				<?php if (isset($this->params['price']) && $this->params['price'] == $key): ?>
+				<?php echo $priceLabel ?>
+				<?php else: ?>
+				<a href="<?php echo $this->url(array(), 'search') ?>?<?php echo http_build_query(array_merge($this->params, array('price' => $key)), null, '&amp;') ?>" title="<?php echo $priceLabel ?>"><?php echo $priceLabel ?></a>
+				<?php endif; ?>
+			</li>
+			<?php endforeach; ?>
+		</ul>
+	</div>
+</div>
+
+<?php $this->headScript()->captureStart() ?>
+$(function() {
+	(new YaddaFixed('search-params-<?php echo $uniqId ?>')).init();
+});
+<?php $this->headScript()->captureEnd() ?>

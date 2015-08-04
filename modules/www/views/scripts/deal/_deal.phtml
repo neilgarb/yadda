@@ -1,0 +1,22 @@
+<div class="deal<?php if (isset($this->deal['thumbs'])): ?> thumb<?php endif; ?>" id="deal-<?php echo $this->deal['id'] ?>">
+	<a href="<?php echo $this->url($this->deal, 'deal') ?>" title="<?php echo $this->escape($this->deal['title']) ?>" class="thumb"><img src="http://<?php echo $this->config->domain->data ?>/deal/<?php echo $this->deal['id'] ?>/listing.jpg" alt="Thumbnail" /></a>
+	<div class="meta clearfix">
+		<a href="<?php echo $this->url($this->deal, 'deal') ?>" title="<?php echo $this->escape($this->deal['title']) ?>" class="title"><?php echo $this->escape($this->deal['title']) ?></a>
+		<span class="description"><?php echo $this->escape($this->trim($this->deal['description'], 250)) ?></span>
+		<div class="actions">
+			<?php
+			$days = floor((time() - $this->deal['date']) / (24 * 60 * 60));
+			if ($days == 0) {
+				$dayClass = 'date-today';
+			} elseif ($days == 1) {
+				$dayClass = 'date-yesterday';
+			} else {
+				$dayClass = 'date-old';
+			}
+			?>
+			<span class="<?php echo $dayClass ?>"><?php echo $this->format($this->deal['date'], 'date') ?></span>
+			| <a href="<?php echo $this->url($this->deal, 'deal') ?>" title="<?php echo $this->escape($this->deal['title']) ?>" class="read-more">Read more...</a>
+		</div>
+	</div>
+	<div style="clear:left;"></div>
+</div>

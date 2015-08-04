@@ -1,0 +1,29 @@
+<?php echo $this->doctype() ?>
+<html>
+
+<head>
+<?php echo $this->headTitle() ?>
+<?php echo $this->headMeta() ?>
+<?php echo $this->headLink() ?>
+<?php echo $this->headScript() ?>
+</head>
+
+<body>
+<?php if (sizeof($this->flashMessages) > 0): ?>
+<div class="flash-messages">
+	<ul>
+		<?php foreach ($this->flashMessages as $message): ?>
+		<li><?php echo $message ?></li>
+		<?php endforeach; ?>
+	</ul>
+</div>
+<?php endif; ?>
+<div id="header">
+	<a href="/" title="Home">yadda. - Admin</a>
+</div>
+<div id="content">
+	<?php echo $this->layout()->content ?>
+</div>
+</body>
+
+</html>

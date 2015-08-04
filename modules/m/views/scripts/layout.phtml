@@ -1,0 +1,42 @@
+<?php echo $this->doctype()."\n" ?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<?php echo $this->headTitle() ?>
+<?php echo $this->headMeta() ?>
+<?php echo $this->headLink() ?>
+<?php if ($this->canonical !== null): ?>
+<link rel="canonical" href="<?php echo $this->escape($this->canonical) ?>" />
+<?php endif; ?>
+<?php echo $this->headScript() ?>
+</head>
+
+<body>
+<div class="wrapper">
+	<?php if (sizeof($this->flashMessages) > 0): ?>
+	<div class="flash-messages">
+		<p class="flash-messages-text"><?php echo $this->flashMessages[0] ?></p>
+	</div>
+	<?php endif; ?>
+	<div class="header">
+		<a href="/" title="Home" class="header-link">
+			<img src="/img/logo.jpg" alt="[Logo]" />
+		</a>
+	</div>
+	<div class="ad">
+		<?php echo $this->ad() ?>
+	</div>
+	<?php echo $this->layout()->content ?>
+	<div class="footer">
+		<p class="footer-text">yadda. is &copy; <?php echo date('Y') ?> NG Development (Pty) Ltd.</p>
+		<p class="footer-actions">
+			<a href="<?php echo $this->url(array(), 'contact') ?>" title="Contact us" class="link footer-actions-link">Contact us</a> |
+			<a href="http://twitter.com/yaddacoza" title="@yaddacoza" class="link footer-actions-link">yadda. on Twitter</a> |
+			<a href="http://<?php echo $this->config->domain->www ?>/?from=m" title="Standard site" class="link footer-actions-link">Standard site</a>
+		</p>
+	</div>
+</div>
+<?php echo $this->tracking() ?>
+</body>
+
+</html>

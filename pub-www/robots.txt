@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /vote
+Disallow: /ajax
+Disallow: /subscribe
+Disallow: /unsubscribe
+Disallow: /css
+Disallow: /js

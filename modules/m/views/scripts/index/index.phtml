@@ -1,0 +1,35 @@
+<div class="section">
+	<h1 class="section-header1">yadda. yet another daily deal aggregator.</h1>
+	<p class="section-text">yadda. gathers into one space the daily deals from South Africa's favourite websites.</p>
+</div>
+
+<div class="section">
+	<h2 class="section-header2">Search</h2>
+	<form action="<?php echo $this->url(array(), 'search') ?>" method="get">
+		<input type="text" name="query" class="input-text" />
+		<input type="submit" value="Search" class="input-button" />
+	</form>
+</div>
+
+<div class="section">
+	<h2 class="section-header2">Filter by city</h2>
+	<ul class="section-list">
+		<?php foreach ($this->regions as $id => $name): ?>
+		<li class="section-list-item"><a href="<?php echo $this->url(array(), 'search') ?>?region=<?php echo urlencode($id) ?>" title="<?php echo $this->escape($name) ?>" class="link"><?php echo $this->escape($name) ?></a></li>
+		<?php endforeach; ?>
+	</ul>
+</div>
+
+<div class="section">
+	<h2 class="section-header2">Filter by price</h2>
+	<ul class="section-list">
+		<?php foreach ($this->priceRanges as $key => $range): ?>
+		<?php $label = 'R'.$range[0].' - '.(sizeof($range) > 1 ? 'R'.$range[1] : '') ?>
+		<li class="section-list-item"><a href="<?php echo $this->url(array(), 'search') ?>?price=<?php echo urlencode($key) ?>" title="<?php echo $this->escape($label) ?>" class="link"><?php echo $this->escape($label) ?></a></li>
+		<?php endforeach; ?>
+	</ul>
+</div>
+
+<div class="section">
+	<p class="section-text">Or, just show me <a href="<?php echo $this->url(array(), 'search') ?>" title="All deals" class="link">all the deals...</a></p>
+</div>

@@ -1,0 +1,18 @@
+<h1>Regions</h1>
+
+<table class="list">
+	<?php
+	foreach ($this->regions['results'] as $region) {
+		echo $this->partial('region/_list.phtml', array('region' => $region));
+	}
+	?>
+</table>
+
+<?php echo $this->partial('_pagination.phtml', array(
+	'url' => '/region/list',
+	'data' => $this->regions
+)) ?>
+
+<ul class="actions">
+	<li><a href="/region/new?return=<?php echo urlencode($_SERVER['REQUEST_URI']) ?>" title="Add a new region">Add new...</a></li>
+</ul>

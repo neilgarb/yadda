@@ -1,0 +1,39 @@
+<?php echo $this->render('_header.phtml') ?>
+
+<div class="sharing">
+	<div class="facebook">
+		<fb:like href="http://www.facebook.com/pages/yaddacoza/168996299837719" send="false" layout="button_count" />
+	</div>
+	<div class="google">
+		<div class="g-plusone" data-size="medium" data-href="http://yadda.co.za/"></div>
+	</div>
+</div>
+
+<div id="search">
+	<label>
+		Jump to:
+		<select id="region-select">
+			<option value=""></option>
+			<?php foreach ($this->regions as $region): ?>
+			<?php if ($region['lat'] !== null && $region['long'] !== null): ?>
+			<option value="<?php echo Zend_Json::encode(array($region['lat'], $region['long'])) ?>"><?php echo $this->escape($region['name']) ?></option>
+			<?php endif; ?>
+			<?php endforeach; ?>
+		</select>
+		<input type="button" value="Go" id="region-select-go" />
+	</label>
+</div>
+
+<div class="map-wrapper">
+	<div id="map">
+		&nbsp;
+	</div>
+</div>
+
+<?php echo $this->render('_footer.phtml') ?>
+
+<?php $this->headScript()->captureStart() ?>
+$(function() {
+	(new YaddaMap('map')).init();
+});
+<?php $this->headScript()->captureEnd() ?>

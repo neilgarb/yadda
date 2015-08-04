@@ -1,0 +1,30 @@
+<?php echo $this->render('_header.phtml') ?>
+
+<div id="subscribe">
+	<div class="wrapper">
+		<div class="side-padding">
+			<h1>Subscribe via email</h1>
+			<form action="<?php echo $this->url(array(), 'subscribe') ?>" method="post">
+				<div class="params">
+					<p>Dear yadda.</p>
+					<p>Please send an email with a summary of
+					<span class="params-description">"<?php echo $this->escape(lcfirst($this->result['description'])) ?>"</span>
+					over the previous day to <?php echo $this->form->email ?> at <?php echo $this->form->time ?> daily.</p>
+					<p>Please make sure that you only use my email address to send me information about new deals, and please don't ever (ever) share it with third parties.</p>
+					<p>Best regards,<br />
+					<?php echo $this->form->name ?></p>
+				</div>
+				<div>
+					<?php echo $this->form->submit ?>
+				</div>
+				<?php foreach ($this->result['params'] as $key => $value): ?>
+				<?php if (!empty($value)): ?>
+				<input type="hidden" name="<?php echo $this->escape($key) ?>" value="<?php echo $this->escape($value) ?>" />
+				<?php endif; ?>
+				<?php endforeach; ?>
+			</form>
+		</div>
+	</div>
+</div>
+
+<?php echo $this->render('_footer.phtml') ?>

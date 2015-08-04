@@ -1,0 +1,6 @@
+div#subscribe { }
+	div#subscribe div.wrapper { padding:20px 0; }
+	div#subscribe div.params { background:#eee; padding:25px 25px 0 25px; font-family:monospace; border-top:1px solid #ccc; border-bottom:1px solid #ccc; margin-bottom:10px; }
+	div#subscribe div.params p { padding:0 0 25px 0; line-height:20px; }
+	div#subscribe div.params span.params-description { color:#666; display:block; padding:10px 0; }
+	div#subscribe form input[type=text] { width:200px; font-family:monospace; border:0; border-bottom:1px solid #000; background:#fdfdfd; line-height:16px; }

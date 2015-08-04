@@ -1,0 +1,30 @@
+<?php echo $this->render('_header.phtml') ?>
+
+<div id="bot">
+	<div class="wrapper">
+		<div class="side-padding">
+			<h2>Bot</h2>
+			<ol>
+				<li>
+					<h3>What is this site?</h3>
+					<p>yadda. yet another daily deal aggregator.</p>
+					<p>yadda gathers into one place the daily deals from South Africa's favourite group buying sites.</p>
+				</li>
+				<li>
+					<h3>Why is yadda's bot crawling my site?</h3>
+					<p>Your site has been identified as a group buying site offering deals in South Africa, and the yadda bot has been configured to poll your site for new daily deals.</p>
+				</li>
+				<li>
+					<h3>What user agent strings does your bot use?</h3>
+					<p>Just the one: <code><?php echo $this->escape($this->config->userAgent) ?></code>.
+				</li>
+				<li>
+					<h3>I don't want the yadda bot to crawl my site anymore. What can I do?</h3>
+					<p>If you would like to request that the yadda bot stops crawling your site, please <a href="<?php echo $this->url(array(), 'contact') ?>" title="Contact us">drop us a note</a>.</p>
+				</li>
+			</ol>
+		</div>
+	</div>
+</div>
+
+<?php echo $this->render('_footer.phtml') ?>
